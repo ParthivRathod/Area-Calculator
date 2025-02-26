@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #EBD3F8;
+            color: black;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: #2E073F;
+            color: white;
+            text-decoration: none;
+           
+
+        }
+
+        .nav {
+            list-style: none;
+            text-decoration: none;
+            margin: 5px;
+            padding: 10px;
+            font-size: 20px;
+            margin-right: 20px;
+            margin-left: 10px;
+
+        }
+
+        .nav:nth-child(2) {
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+        }
+
+        .info {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+
+        .card {
+
+            width: 400px;
+            min-height: 401px;
+            background-color: #2E073F;
+            display: block;
+            flex-wrap: wrap;
+            text-align: center;
+            color: white;
+            margin: 20px;
+            margin-top: 52px;
+            border: 2px solid black; /* White border */
+            border-radius: 20px;
+        }
+        
+        .card h1{
+            margin-bottom: 40px;
+        }
+
+        .input-num {
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            margin: 18px;
+            width: 82%;
+            border-radius: 10px;
+        }
+        .btn{
+           color: white;
+           padding: 10px;
+           margin: 6px;
+           border-radius: 20px;
+           border: none;
+           width: 100px;
+          font-weight: bold;
+          margin-top: 50px;
+
+        }
+        .btn-cal{
+            background-color: #c7d1c7;
+            color: black;
+          
+        }
+        .btn-reset{
+            background-color: #e54a3f;
+            color: white;
+            
+        }
+
+        .card2 .btn-group{
+            margin-top: -11px;
+        }
+        .text-result{
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 37px;
+        }
+        .circle-result {
+            margin-top: 108px;
+        }
+        
+       .btn:hover{
+        background-color: #EBD3F8;
+        color: black;
+        transform: scale(0.9);
+        transition: 0.3s;
+       }
+
+
+
+       .footer {
+    background-color: #2E073F;
+
+    color: white;
+
+    padding: 10px 0;
+     
+    text-align: center;
+    margin-top: 66px;
+
+}
+
+.footer .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer p {
+    margin: 10px 0;
+    font-size: 14px;
+
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+
+}
+
+.footer .mx-2 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+    </style>
+</head>
+<nav class="navbar">
+    <li class="nav">Home</a></li>
+    <li class="nav">Area</li>
+    <li class="nav">About</li>
+    <li class="nav">Solution</li>
+
+</nav>
+
+<div class="info">
+    <h1>Area Calculator: Rectangle & Circle</h1>
+    <!-- <p>Area Calculator is a simple application to compute the area of a rectangle or a circle effortlessly."</p> -->
+</div>
+<div class="container">
+    <div class="info">
+    </div>
+
+    <div class="card card1">
+        <h1>Area of Rectangle</h1>
+
+        <input type="number" class="input-num" id="length" placeholder="Enter First number">
+        <input type="number" class="input-num" id="width" placeholder="Enter Second number">
+
+        <p id="rectangleResult" class="text-result">Result Shown here</p>
+
+        <div class="btn-group">
+            <button class="btn btn-reset" onclick="resetRectangleResult()">Reset</button>
+            <button class="btn btn-cal" onclick="calculateRectangleArea()">Rectangle</button>
+        </div>
+
+    </div>
+
+    <div class="card card2">
+        <h1>Area of Circle</h1>
+        <input type="number" class="input-num" id="radius" placeholder="Enter radius">
+
+        <p id="circleResult" class="text-result circle-result">Result Shown here</p>
+
+        <div class="btn-group">
+            <button class="btn btn-reset" onclick="resetCircleResult()">Reset</button>
+            <button class="btn btn-cal" onclick="calculateCircleArea()">Circle</button>
+        </div>
+
+    </div>
+
+
+</div>
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    
+
+
+function calculateRectangleArea(){
+    const lengthElement = document.getElementById("length").value;
+    const widthElement = document.getElementById("width").value;
+    const resultRectangleElement = document.getElementById("rectangleResult");
+      
+         
+    if(lengthElement > 0 && widthElement > 0){
+        const area = parseFloat(lengthElement) * parseFloat(widthElement);
+
+        resultRectangleElement.innerText = `Area of Rectangle : ${area}`;    
+    }
+    else{
+        resultRectangleElement.innerText = `Please enter valid values!`;
+    }
+
+
+}
+
+
+function calculateCircleArea() {
+    const radiusElement = document.getElementById("radius").value;
+    const circleResultElement = document.getElementById("circleResult");
+
+    if(radiusElement > 0){
+          const area = parseFloat( Math.PI )*parseFloat(Math.pow(radiusElement, 2)) ;
+          circleResultElement.innerText =  `Area of Circle : ${area.toFixed(2)}`;
+    }
+    else{
+        circleResultElement.innerText = `Please enter valid values!`;
+    }
+
+}
+
+function resetRectangleResult(){
+    const lengthElement = document.getElementById("length").value ="";
+    const widthElement = document.getElementById("width").value ="";
+    const resultRectangleElement = document.getElementById("rectangleResult");
+       resultRectangleElement.innerText = `Result Shown here`
+   ;
+}
+
+
+function resetCircleResult(){
+    const radiusElement = document.getElementById("radius").value= "";
+    const circleResultElement = document.getElementById("circleResult");
+
+    circleResultElement.innerText = `Result Shown here`;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<body>
+
+</html>
+</body>
